@@ -1,5 +1,4 @@
 myst: v1
-jtex: v1
 title: ISPRS - Full Paper
 description: ISPRS Full Paper template
 version: 1.0.0
@@ -17,16 +16,14 @@ tags:
 parts:
   - id: abstract
     required: true
-    description: >
-      A good abstract will begin with a short description of the problem being
-      addressed, briefly describe the new data or analyses, then briefly states
-      the main conclusion(s) and how they are supported and uncertainties.
+    description: Between 100 and 250 words.
     max_words: 250
 doc:
   - id: title
     required: true
   - id: bibliography
   - id: keywords
+    description: Should have between 5 to 8 keywords.
   - id: authors
 options:
   - type: boolean
