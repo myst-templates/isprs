@@ -1,15 +1,16 @@
+myst: v1
 jtex: v1
-title: 'ISPRS Paper'
-description: 'ISPRS Full Paper template'
+title: ISPRS Paper
+description: ISPRS Full Paper template
 version: 1.0.0
-license: TODO
-source: 'https://www.isprs.org/documents/orangebook/app5.aspx'
+license: CC-BY-3.0
+source: https://www.isprs.org/documents/orangebook/app5.aspx
 thumbnail: ./thumbnail.png
 authors:
-  - name: 'International Society for Photogrammetry and Remote Sensing (ISPRS)'
-    website: 'https://www.isprs.orgg'
+  - name: International Society for Photogrammetry and Remote Sensing (ISPRS)
+    website: https://www.isprs.orgg
     affiliations:
-      - 'ISPRS'
+      - ISPRS
 tags:
   - paper
   - two_column
@@ -30,5 +31,18 @@ options:
     description: Mark the document as draft
 files:
   - template.tex
+  - isprs.bst
+  - isprs.cls
 packages:
   - amsmath
+  - babel
+  - caption
+  - epsfig
+  - epstopdf
+  - footmisc
+  - geometry
+  - graphicx
+  - setspace
+  - subfigure
+  - times
+  - titlesec
