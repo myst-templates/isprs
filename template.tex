@@ -43,15 +43,39 @@
 
 
 % KAO: Remove extra spacing
+[# if options.anonymous #]
 % Anonymous submissions, authors' names should not be visible
-\author{***** (for review, names must be rendered anonymous)}
-
-% KAO: Remove extra newline
+\author{***** (Anonymous Submission)}
 % Anonymous submissions, authors' affiliations should not be visible
-\address{**** (for review, affiliations must be rendered anonymous)}
-
-% If the corresponding author is NOT the final author, always add a % space before the subsequent comma, i.e.
+\address{**** (Anonymous Submission)}
+[# else #]
+% If the corresponding author is NOT the final author, always add a
+% space before the subsequent comma, i.e.
 % first author name\textsuperscript{a,}\thanks{Corresponding author} , % second author name \textsuperscript{b}, etc.
+\author{
+[#- for author in doc.authors -#]
+[-- author.name --]
+[#- if author.affiliations -#]
+\textsuperscript{
+	[#- for affil in author.affiliations -#]
+		[-- affil.letter | lower --]
+		[#- if not loop.last #],[# endif -#]
+	[#- endfor -#]
+[#- if author.corresponding #],[# endif -#]
+}
+[#- endif -#]
+[#- if author.corresponding #]\thanks{Corresponding Author: [- author.email -]} [# endif -#]
+[#- if not loop.last #], [# endif -#]
+[#- endfor -#]
+}
+\address{
+	[#- for affil in doc.affiliations -#]
+	\textsuperscript{[- affil.letter | lower -]}
+	[-affil.value-]
+	[#- endfor -#]
+}
+[# endif #]
+
 % thanks to Niclas Borlin 05-05-2016
 
 

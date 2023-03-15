@@ -1,6 +1,6 @@
 myst: v1
 jtex: v1
-title: ISPRS Paper
+title: ISPRS - Full Paper
 description: ISPRS Full Paper template
 version: 1.0.0
 license: CC-BY-3.0
@@ -10,7 +10,7 @@ authors:
   - name: International Society for Photogrammetry and Remote Sensing (ISPRS)
     website: https://www.isprs.orgg
     affiliations:
-      - ISPRS
+      - International Society for Photogrammetry and Remote Sensing (ISPRS)
 tags:
   - paper
   - two_column
@@ -27,10 +27,11 @@ doc:
     required: true
   - id: bibliography
   - id: keywords
+  - id: authors
 options:
   - type: boolean
-    id: draft
-    description: Mark the document as draft
+    id: anonymous
+    description: Anonymize the authors of the document
   - id: paper_size
     type: choice
     description: Set the paper size for the document
