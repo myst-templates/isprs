@@ -1,0 +1,34 @@
+jtex: v1
+title: 'ISPRS Paper'
+description: 'ISPRS Full Paper template'
+version: 1.0.0
+license: TODO
+source: 'https://www.isprs.org/documents/orangebook/app5.aspx'
+thumbnail: ./thumbnail.png
+authors:
+  - name: 'International Society for Photogrammetry and Remote Sensing (ISPRS)'
+    website: 'https://www.isprs.orgg'
+    affiliations:
+      - 'ISPRS'
+tags:
+  - paper
+  - two_column
+parts:
+  - id: abstract
+    required: true
+    description: >
+      A good abstract will begin with a short description of the problem being
+      addressed, briefly describe the new data or analyses, then briefly states
+      the main conclusion(s) and how they are supported and uncertainties.
+doc:
+  - id: title
+    required: true
+  - id: bibliography
+options:
+  - type: boolean
+    id: draft
+    description: Mark the document as draft
+files:
+  - template.tex
+packages:
+  - amsmath
