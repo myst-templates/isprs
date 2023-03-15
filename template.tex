@@ -1,28 +1,113 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copy in your template with your latex document!
+% Version 2022-09-20
+% update – 161114 by Ken Arroyo Ohori: made spacing closer to Word template throughout, put proper quotes everywhere, removed spacing that could cause labels to be wrong, added non-breaking and inter-sentence spacing where applicable, removed explicit newlines
+% update – 010819 by Dennis Wittich: made spacing and font size closer to Word template, updated references and refernces style
+% update – 042319 by Dennis Wittich: font size of captions set to 'small', first author names are shortened, hyphenation fixed
+% update – 010620 by Dennis Wittich: Footnotes alignment set to left
+% update - 151220 by Clement Mallet: Template adapted for double blind full paper submissions
+% update - 060321 by Christian Heipke: Template refined for double blind full paper submissions
+% update - 090921 by Christian Heipke: Template refined for double blind full paper submissions
+% update - 200922 by Christian Heipke: general template update
 
-[# if options.draft #]
-\documentclass[draft]{article}
-[# else #]
-\documentclass{article}
-[# endif #]
+\documentclass{isprs} % isprs class modified 23-04-2019 (Dennis Wittich)
+\usepackage{subfigure}
+\usepackage{setspace}
+\usepackage{geometry} % added 27-02-2014 Markus Englich
+\usepackage{epstopdf}
+\usepackage[labelsep=period]{caption}  % added 14-04-2016 Markus Englich - Recommendation by Sebastian Brocks
+\usepackage[british]{babel}
+\usepackage[hang]{footmisc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\def\footnotemargin{1em} % added 08-01-2020 Dennis Wittich
 
-% You should have an imports section
 [- IMPORTS -]
 
-\begin{document}
-\title{[-doc.title-]}
+%\usepackage[authoryear]{natbib}
+%\def\bibhang{0pt}
 
-[# if parts.abstract #]
-\begin{abstract}
-[-parts.abstract-]
-\end{abstract}
+\geometry{[- options.paper_size -], top=25mm, left=20mm, right=20mm, bottom=25mm, headsep=10mm, footskip=12mm} % added 27-02-2014 Markus Englich
+%\usepackage{enumitem}
+
+%\usepackage{isprs}
+%\usepackage[perpage,para,symbol*]{footmisc}
+
+%\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\captionsetup{justification=centering,font=normal} % thanks to Niclas Borlin 05-05-2016
+\captionsetup[figure]{font=small} % added 23-04-2019 Dennis Wittich
+\captionsetup[table]{font=small} % added 23-04-2019 Dennis Wittich
+
+\begin{document}
+
+\title{[-doc.title-]}
+\date{}
+
+
+% KAO: Remove extra spacing
+[# if options.anonymous #]
+% Anonymous submissions, authors' names should not be visible
+\author{***** (Anonymous Submission)}
+% Anonymous submissions, authors' affiliations should not be visible
+\address{**** (Anonymous Submission)}
+[# else #]
+% If the corresponding author is NOT the final author, always add a
+% space before the subsequent comma, i.e.
+% first author name\textsuperscript{a,}\thanks{Corresponding author} , % second author name \textsuperscript{b}, etc.
+\author{
+[#- for author in doc.authors -#]
+[-- author.name --]
+[#- if author.affiliations -#]
+\textsuperscript{
+	[#- for affil in author.affiliations -#]
+		[-- affil.letter | lower --]
+		[#- if not loop.last #],[# endif -#]
+	[#- endfor -#]
+[#- if author.corresponding #],[# endif -#]
+}
+[#- endif -#]
+[#- if author.corresponding #]\thanks{Corresponding Author: [- author.email -]} [# endif -#]
+[#- if not loop.last #], [# endif -#]
+[#- endfor -#]
+}
+\address{
+	[#- for affil in doc.affiliations -#]
+	\textsuperscript{[- affil.letter | lower -]}
+	[-affil.value-]
+	[#- endfor -#]
+}
 [# endif #]
+
+% thanks to Niclas Borlin 05-05-2016
+
+
+\commission{XX, }{YY} %This field is optional. If filled, XX and YY should be replaced by adequate numbers. See https://www2.isprs.org/commissions/
+\workinggroup{XX/YY} %This field is optional.
+\icwg{}   %This field is optional.
+
+% KAO: Use times symbol
+[# if parts.abstract #]
+\abstract{
+[-parts.abstract-]
+}
+[# else #]
+% \abstract{You should include an abstract!!}
+[# endif #]
+
+\keywords{[- doc.keywords | join(", ") -]}
+
+\maketitle
+
+%\saythanks % added 28-02-2014 Markus Englich
 
 [-CONTENT-]
 
 [# if doc.bibliography #]
-\bibliography{[- doc.bibliography | join(", ") -]}
+{
+	\begin{spacing}{1.17}
+		\normalsize
+		\bibliography{[- doc.bibliography | join(", ") -]} % Include your own bibliography (*.bib), style is given in isprs.cls
+	\end{spacing}
+}
 [# endif #]
 
 \end{document}
+

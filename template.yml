@@ -1,15 +1,16 @@
+myst: v1
 jtex: v1
-title: 'ISPRS Paper'
-description: 'ISPRS Full Paper template'
+title: ISPRS - Full Paper
+description: ISPRS Full Paper template
 version: 1.0.0
-license: TODO
-source: 'https://www.isprs.org/documents/orangebook/app5.aspx'
+license: CC-BY-3.0
+source: https://www.isprs.org/documents/orangebook/app5.aspx
 thumbnail: ./thumbnail.png
 authors:
-  - name: 'International Society for Photogrammetry and Remote Sensing (ISPRS)'
-    website: 'https://www.isprs.orgg'
+  - name: International Society for Photogrammetry and Remote Sensing (ISPRS)
+    website: https://www.isprs.orgg
     affiliations:
-      - 'ISPRS'
+      - International Society for Photogrammetry and Remote Sensing (ISPRS)
 tags:
   - paper
   - two_column
@@ -20,15 +21,42 @@ parts:
       A good abstract will begin with a short description of the problem being
       addressed, briefly describe the new data or analyses, then briefly states
       the main conclusion(s) and how they are supported and uncertainties.
+    max_words: 250
 doc:
   - id: title
     required: true
   - id: bibliography
+  - id: keywords
+  - id: authors
 options:
   - type: boolean
-    id: draft
-    description: Mark the document as draft
+    id: anonymous
+    description: Anonymize the authors of the document
+  - id: paper_size
+    type: choice
+    description: Set the paper size for the document
+    default: a4paper
+    choices:
+      - a4paper
+      - letterpaper
+      - legalpaper
+      - a5paper
+      - executivepaper
+      - b5paper
 files:
   - template.tex
+  - isprs.bst
+  - isprs.cls
 packages:
   - amsmath
+  - babel
+  - caption
+  - epsfig
+  - epstopdf
+  - footmisc
+  - geometry
+  - graphicx
+  - setspace
+  - subfigure
+  - times
+  - titlesec
