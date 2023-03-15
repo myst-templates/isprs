@@ -21,14 +21,27 @@ parts:
       A good abstract will begin with a short description of the problem being
       addressed, briefly describe the new data or analyses, then briefly states
       the main conclusion(s) and how they are supported and uncertainties.
+    max_words: 250
 doc:
   - id: title
     required: true
   - id: bibliography
+  - id: keywords
 options:
   - type: boolean
     id: draft
     description: Mark the document as draft
+  - id: paper_size
+    type: choice
+    description: Set the paper size for the document
+    default: a4paper
+    choices:
+      - a4paper
+      - letterpaper
+      - legalpaper
+      - a5paper
+      - executivepaper
+      - b5paper
 files:
   - template.tex
   - isprs.bst
