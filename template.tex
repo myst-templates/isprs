@@ -71,7 +71,7 @@
 \address{
 	[#- for affil in doc.affiliations -#]
 	\textsuperscript{[- affil.letter | lower -]}
-	[-affil.value-]
+	[-affil.value.name-]
 	[#- endfor -#]
 }
 [# endif #]
