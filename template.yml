@@ -25,6 +25,7 @@ doc:
   - id: keywords
     description: Should have between 5 to 8 keywords.
   - id: authors
+  - id: affiliations
 options:
   - type: boolean
     id: anonymous
