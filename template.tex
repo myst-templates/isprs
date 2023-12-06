@@ -92,7 +92,11 @@
 % \abstract{You should include an abstract!!}
 [# endif #]
 
+[# if doc.keywords #]
 \keywords{[- doc.keywords | join(", ") -]}
+[# else #]
+\keywords{}
+[# endif #]
 
 \maketitle
 
